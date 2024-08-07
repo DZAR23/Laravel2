@@ -40,7 +40,11 @@ class ConductoreController extends Controller
 
          // Crear un nuevo conductor usando el método `create` del modelo
         Conductore::create([
-            'name' => 'requist
+            'name' => 'requist',
+            'movil' => 'requist',
+            'categoria' => 'requist',
+            'email' => 'requist',
+            'telefono' => 'requist',
         ]);
         
         // Redireccionar a la vista de listado de conductores
