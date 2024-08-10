@@ -20,10 +20,29 @@ class ConductoreController extends Controller
         //return view('Conductore.index', ['conductore' => $conductore]);
     }
 
-    public function create()
+    public function create(array $data)
     {
+
         return view('Conductore.create');
         //dd("estoy dentro de create");
+         // Crear un nuevo conductor usando el método `create` del modelo
+         Conductore::create([
+            'name' => $data['name'],
+            //'movil' => 'requist',
+            //'categoria' => 'requist',
+            //'email' => 'requist',
+            //'telefono' => 'requist',
+        ]);
+    }
+
+    public function crear(array $data){
+        Conductore::create([
+            'name' => $data['name'],
+            //'movil' => 'requist',
+            //'categoria' => 'requist',
+            //'email' => 'requist',
+            //'telefono' => 'requist',
+        ]);
     }
 
     public function store(Request $request)
@@ -38,19 +57,14 @@ class ConductoreController extends Controller
             'telefono' => 'required|integer|min:1',
         ]);
 
-         // Crear un nuevo conductor usando el método `create` del modelo
-        Conductore::create([
-            'name' => 'requist',
-            'movil' => 'requist',
-            'categoria' => 'requist',
-            'email' => 'requist',
-            'telefono' => 'requist',
-        ]);
+        $this->crear($request->all() );
+
+        
         
         // Redireccionar a la vista de listado de conductores
         return redirect()->route('Conductore.index');
     }
-
+    
     public function show(string $id)
     {
         //
